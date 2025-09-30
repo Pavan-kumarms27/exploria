@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ribeye&display=swap');
+
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+/* navbar------------------------------------------------------------------------------------------------------------------- */
+.nav-link{
+  color: gold !important;
+  text-transform: uppercase;
+  transition: all ease 0.25s !important;
+}
+
+.nav-link:hover{
+  background-color: teal; 
+  border-radius: 15px;
+  color: gold !important;
+}
+
+.nav-link:active{
+  transform: scale(0.88);
+}
+.navbar{
+   background-image: linear-gradient(to right,rgb(255, 136, 0),rgb(255, 247, 0),rgb(255, 0, 0));
+  -webkit-background-clip:text;
+  -webkit-background-color:transparent;
+  
+  background-color: transparent !important;
+  background-blend-mode:darken ;
+  font-family:Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#logo{
+  height: 90.5px;
+}
+
+#logo-container{
+  display: flex;
+  align-content: center;
+}
+
+
+/* home-------------------------------------------------------------------------------------------------------------------- */
+#home{
+  background-image: url('img/wallpaper/home_wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+#home,#reviews,#booking{
+  height: 110vh;
+  width: auto;
+}
+
+#toggle{
+  background-color: rgb(50, 114, 89);
+  border: none;
+}
+
+#home_content{
+  position: relative;
+  top: 55%;
+  margin-left: 60%;
+  height: 30%;
+  width:40%;
+  color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
+}
+
+#letsgoo-btn{
+  position: relative;
+}
+
+#letsgoo{
+  transition: all ease 0.25s !important;
+}
+#letsgoo:hover{
+  box-shadow: 5px 5px 50px gold; 
+  border-radius: 15px;
+}
+
+#letsgoo:active{
+  transform: scale(0.88);
+}
+
+#letsgoo_a{
+  text-decoration: none;
+  color: black !important;
+}
+
+/* packages-------------------------------------------------------------------------------------------------------------------- */
+
+#package{
+  background-image:url(img/wallpaper/pro_bg.jpg);
+}
+
+#heading{
+  display: flex;
+  justify-content: center;
+  padding: .7%;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right,rgb(255, 0, 0),rgb(255, 247, 0),rgb(255, 0, 157));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: 2%;
+}
+
+#packages-items{
+  display: flex;
+  align-items: flex-start;
+  justify-content:start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-img-top {
+  padding-top: 10px;
+  width: 100%;
+  height: 250px;
+  object-fit:contain;
+}
+
+.card{
+  background-color: black;
+  color: white;
+  border-color: aliceblue;
+  border-radius: 15px;
+    transition: all ease 0.25s !important;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 5px 5px 5px rgb(255, 255, 255);
+  background-position: center;
+  border-color: white;
+}
+
+.card-title{
+  text-transform: capitalize;
+}
+
+/* booking-------------------------------------------------------------------------------------------------------------------- */
+
+#booking_heading{
+   color: red;
+  font-family: Ribeye,cursive;
+  letter-spacing: 2%
+}
+
+#booking{
+  padding-top: 7.9%;
+  background-image: url(img/wallpaper/boook.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.booking_form{
+  padding-top: 10%;
+  width: 50%;
+  height: 80%;
+  margin: auto;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#book_trip{
+  position: relative;
+  padding-left: 45%;
+  padding-top: 4%;
+}
+
+.form-control{
+  border-radius: 11px;
+}
+
+/* about us------------------------------------------------------------------------------------------------------------------------ */
+#about_us{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-image: url(img/wallpaper/aboutus.jpg);
+}
+
+#about_us_content{
+  padding-top: 10%;
+  height: 80%;
+  width: 70%;
+  color: rgb(0, 225, 0);
+  text-shadow: 1px 1px 2px black;
+  backdrop-filter: blur(2px); 
+}
+
+/* contact_us------------------------------------------------------------------------------------------------------------------------*/
+#contact_us{
+  background-image: linear-gradient(to right,rgb(88, 87, 87),rgb(63, 62, 62));
+}
+
+#contact_us_content{
+  height:80%;
+  width: 80%;
+  margin: auto;
+  padding-top: 5%;
+}
+
+.exploria_id{
+  text-decoration: none;
+  color: rgb(0, 255, 0);
+}
+
+.icons{
+  text-decoration: none;
+  color: black;
+  font-size: 1.5em;
+}
+
+.contact_ep{
+  color: blueviolet;
+}
+
+.contact_us_cont{
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+}
+
+/* mobile view-------------------------------------------------------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+  #home{
+    height: 120vh;
+}
+  
+  .navbar{
+    height: auto;
+    background-image:url(img/wallpaper/nav.jpg) !important;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .navbar nav > a {
+  color: gold;
+}
+
+  #home_content {
+    margin: 20% auto auto auto;  
+    width: 90%;               
+    text-align: center;       
+  }
+
+  #letsgoo-btn {
+    margin-left: 0;           
+    text-align: center;
+  }
+
+   #about_us {
+    height: auto;
+    padding: 20px 10px;
+    display: block;
+  }
+
+  #about_us_content {
+    width: 95%;              
+    padding: 15px;           
+    margin: 0 auto;          
+    text-align: justify;     
+    font-size: 15px;        
+    line-height: 1.6;
+    backdrop-filter: blur(3px);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+  }
+
+  #about_us_content h2 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  #about_us_content p {
+    margin-bottom: 15px;
+  }
+}
