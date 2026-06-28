@@ -1,62 +1,102 @@
-/* ===== Dark / Light Mode Toggle ===== */
-const darkModeBtn = document.getElementById("dark-mode-btn");
+document.addEventListener("DOMContentLoaded", () => {
+  /* ===== Core UI Controls & Theme Toggles ===== */
+  const darkModeBtn = document.getElementById("dark-mode-btn");
 
-function applyTheme(isDark) {
-  if (isDark) {
-    document.body.classList.add("dark-mode");
-    darkModeBtn.textContent = "☀️ Light";
-  } else {
-    document.body.classList.remove("dark-mode");
-    darkModeBtn.textContent = "🌙 Dark";
+  /**
+   * Applies application state parameters to change system theme elements
+   * @param {Boolean} isDark
+   */
+  function applyTheme(isDark) {
+    if (isDark) {
+      document.body.classList.add("dark-mode");
+      document.documentElement.classList.add("dark-mode");
+      if (darkModeBtn) darkModeBtn.textContent = "☀️ Light";
+    } else {
+      document.body.classList.remove("dark-mode");
+      document.documentElement.classList.remove("dark-mode");
+      if (darkModeBtn) darkModeBtn.textContent = "🌙 Dark";
+    }
   }
-}
 
-// Restore saved preference on page load
-applyTheme(localStorage.getItem("theme") === "dark");
+  // Bind baseline dark-mode conditions immediately based on memory values
+  applyTheme(localStorage.getItem("theme") === "dark");
 
-darkModeBtn.addEventListener("click", () => {
-  const isDark = !document.body.classList.contains("dark-mode");
-  applyTheme(isDark);
-  localStorage.setItem("theme", isDark ? "dark" : "light");
-});
+  if (darkModeBtn) {
+    darkModeBtn.addEventListener("click", () => {
+      const isDark = !document.body.classList.contains("dark-mode");
+      applyTheme(isDark);
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  }
 
-/* ===== Booking Logic ===== */
-let btn = document.querySelectorAll(".btn");
-let sel_trip = document.getElementById("trip");
-let num = document.getElementById("num");
-let amount = document.getElementById("price");
-let email = document.getElementById("email");
-const email_veri = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-let book_btn = document.getElementById("book_btn");
+  /* ===== Auto-Calculated Math Connectors ===== */
+  const tripCards = document.querySelectorAll(".card .btn-primary");
+  const sel_trip = document.getElementById("trip");
+  const num = document.getElementById("num");
+  const amount = document.getElementById("price");
+  const email = document.getElementById("email");
+  const book_btn = document.getElementById("book_btn");
 
-btn.forEach((button) => {
-  button.addEventListener("click", () => {
-    let trip_data = button.getAttribute("data-trip");
-    if (!trip_data) return; // skip buttons that aren't trip cards (e.g. book_btn)
-    sel_trip.value = trip_data;
-    let cost = parseInt(button.getAttribute("data-price"));
-    let people = parseInt(num.value) || 1;
-    amount.value = people * cost;
-  });
-});
+  const email_veri = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-num.addEventListener("input", () => {
-  let selectedTrip = sel_trip.value;
-  if (!selectedTrip) return;
-  let button = document.querySelector(`[data-trip="${selectedTrip}"]`);
-  if (!button) return;
-  let cost = parseInt(button.getAttribute("data-price"));
-  let people = parseInt(num.value) || 1;
-  amount.value = people * cost;
-});
+  /**
+   * Programmatically reads attributes to instantly output accurate calculations
+   */
+  function updateCalculatedTotal() {
+    const selectedTrip = sel_trip.value;
+    if (!selectedTrip) return;
 
-book_btn.addEventListener("click", () => {
-  let verification = email_veri.test(email.value.trim());
-  if (!verification) {
-    alert("Email is not correct 🥺");
-  } else {
-    alert(
-      "Done....!! 🥳🎉🎉 The online link for payment will be sent to you shortly.",
+    // Direct string lookup escaping to securely fetch original item price matrix
+    const cardTargetButton = document.querySelector(
+      `[data-trip="${selectedTrip}"]`,
     );
+    if (!cardTargetButton) return;
+
+    const absoluteCost =
+      parseInt(cardTargetButton.getAttribute("data-price")) || 0;
+    const passengerCount = parseInt(num.value) || 1;
+
+    // Updates numeric text input directly using clean locale standards
+    amount.value =
+      "₹ " + (passengerCount * absoluteCost).toLocaleString("en-IN");
+  }
+
+  // Iterate collection to assign listeners to individual targets
+  tripCards.forEach((button) => {
+    button.addEventListener("click", () => {
+      const tripData = button.getAttribute("data-trip");
+      if (!tripData) return;
+
+      sel_trip.value = tripData;
+      updateCalculatedTotal();
+    });
+  });
+
+  // Track field state shifts to dynamically calculate prices
+  if (num) {
+    num.addEventListener("input", updateCalculatedTotal);
+  }
+
+  /* ===== Form Validation Interface ===== */
+  if (book_btn) {
+    book_btn.addEventListener("click", (e) => {
+      e.preventDefault(); // Halt default browser form submit loops
+
+      const emailValue = email.value.trim();
+      const verification = email_veri.test(emailValue);
+
+      if (!sel_trip.value) {
+        alert("Please select a travel package card first 🌍");
+        return;
+      }
+
+      if (!verification) {
+        alert("Please verify your email credentials 🥺");
+      } else {
+        alert(
+          "Done....!! 🥳🎉🎉 Your custom schedule confirmation and digital payment path will be delivered via email shortly.",
+        );
+      }
+    });
   }
 });
