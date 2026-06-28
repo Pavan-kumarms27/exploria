@@ -7,7 +7,7 @@ Exploria is a premium responsive travel landing page that showcases internationa
 🔗 **Website:** https://exploria1.vercel.app/
 
 ---
-
+ 
 ## ✨ Features
 
 * **Premium Responsive Navigation**
