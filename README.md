@@ -72,9 +72,6 @@ For a better development experience, use the **Live Server** extension in Visual
 
 ```text
 exploria/
-│
-├── .github/
-│   └── workflows/
 ├── img/
 ├── index.html
 ├── exploria.css
