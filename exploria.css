@@ -1,125 +1,221 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ribeye&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ribeye&display=swap");
 
+/* ===== Theme Variables ===== */
+:root {
+  /* Section backgrounds */
+  --bg-home: linear-gradient(135deg, #0d5c7a 0%, #1a0a4e 100%);
+  --bg-package: #f0f0f0;
+  --bg-booking: #ddeef9;
+  --bg-about: #e8f5e9;
+  --bg-contact: linear-gradient(to right, rgb(88, 87, 87), rgb(63, 62, 62));
 
+  /* About section */
+  --about-glass: rgba(255, 255, 255, 0.62);
+  --about-text: rgb(0, 110, 0);
+  --about-heading: #111111;
 
-html, body {
-    margin: 0;
-    padding: 0;
+  /* Booking form */
+  --form-label: #1a1a1a;
+  --form-bg: #ffffff;
+  --form-text: #212529;
+  --form-border: #ced4da;
+
+  /* Contact */
+  --contact-intro: chartreuse;
+  --contact-ep: blueviolet;
+  --icon-color: #111111;
+  --contact-h1: #ffffff;
+
+  /* Cards */
+  --card-hover-shadow: 0 5px 5px 5px rgb(255, 255, 255);
+
+  /* Navbar */
+  --nav-backdrop: rgba(0, 0, 0, 0.15);
 }
 
-html{
-  scroll-behavior: smooth;
-}
-/* navbar------------------------------------------------------------------------------------------------------------------- */
-.nav-link{
-  color: gold !important;
-  text-transform: uppercase;
-  transition: all ease 0.25s !important;
+body.dark-mode {
+  --bg-home: linear-gradient(135deg, #050510 0%, #100520 100%);
+  --bg-package: #111111;
+  --bg-booking: #0b1520;
+  --bg-about: #0b140b;
+  --bg-contact: linear-gradient(to right, #111111, #0a0a0a);
+
+  --about-glass: rgba(0, 0, 0, 0.6);
+  --about-text: rgb(0, 210, 0);
+  --about-heading: #eeeeee;
+
+  --form-label: #cccccc;
+  --form-bg: #182535;
+  --form-text: #e0e0e0;
+  --form-border: #3a5065;
+
+  --contact-intro: #00ff88;
+  --contact-ep: #c084fc;
+  --icon-color: #cccccc;
+  --contact-h1: #eeeeee;
+
+  --card-hover-shadow: 0 5px 5px 5px rgba(255, 255, 255, 0.25);
+
+  --nav-backdrop: rgba(5, 5, 18, 0.88);
 }
 
-.nav-link:hover{
-  background-color: teal; 
-  border-radius: 15px;
-  color: gold !important;
-}
-
-.nav-link:active{
-  transform: scale(0.88);
-}
-.navbar{
-   background-image: linear-gradient(to right,rgb(255, 136, 0),rgb(255, 247, 0),rgb(255, 0, 0));
-  -webkit-background-clip:text;
-  -webkit-background-color:transparent;
-  
-  background-color: transparent !important;
-  background-blend-mode:darken ;
-  font-family:Arial, Helvetica, sans-serif;
+/* ===== Base ===== */
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
-#logo{
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Navbar ===== */
+.nav-link {
+  color: gold !important;
+  text-transform: uppercase;
+  transition: all ease 0.25s !important;
+}
+
+.nav-link:hover {
+  background-color: teal;
+  border-radius: 15px;
+  color: gold !important;
+}
+
+.nav-link:active {
+  transform: scale(0.88);
+}
+
+.navbar {
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 136, 0),
+    rgb(255, 247, 0),
+    rgb(255, 0, 0)
+  );
+  -webkit-background-clip: text;
+  background-color: var(--nav-backdrop) !important;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.4s ease;
+}
+
+#logo {
   height: 90.5px;
 }
 
-#logo-container{
+#logo-container {
   display: flex;
-  align-content: center;
+  align-items: center;
 }
 
-
-/* home-------------------------------------------------------------------------------------------------------------------- */
-#home{
-  background-image: url('img/wallpaper/home_wallpaper.jpg');
-  background-size: cover;
-  background-position: center;
+/* ===== Dark Mode Toggle Button ===== */
+#dark-mode-btn {
+  border: 2px solid gold;
+  color: gold;
+  background: transparent;
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  margin-left: 14px;
+  letter-spacing: 0.03em;
 }
 
-#home,#reviews,#booking{
+#dark-mode-btn:hover {
+  background: gold;
+  color: #000;
+  box-shadow: 0 0 12px gold;
+}
+
+#dark-mode-btn:active {
+  transform: scale(0.88);
+}
+
+/* ===== Home ===== */
+#home {
+  background: var(--bg-home);
+  transition: background 0.4s ease;
+}
+
+#home,
+#reviews,
+#booking {
   height: 110vh;
   width: auto;
 }
 
-#toggle{
+#toggle {
   background-color: rgb(50, 114, 89);
   border: none;
 }
 
-#home_content{
+#home_content {
   position: relative;
   top: 55%;
   margin-left: 60%;
   height: 30%;
-  width:40%;
-  color: rgb(255, 255, 255);
+  width: 40%;
+  color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: larger;
 }
 
-#letsgoo-btn{
+#letsgoo-btn {
   position: relative;
 }
 
-#letsgoo{
+#letsgoo {
   transition: all ease 0.25s !important;
 }
-#letsgoo:hover{
-  box-shadow: 5px 5px 50px gold; 
+
+#letsgoo:hover {
+  box-shadow: 5px 5px 50px gold;
   border-radius: 15px;
 }
 
-#letsgoo:active{
+#letsgoo:active {
   transform: scale(0.88);
 }
 
-#letsgoo_a{
+#letsgoo_a {
   text-decoration: none;
   color: black !important;
 }
 
-/* packages-------------------------------------------------------------------------------------------------------------------- */
-
-#package{
-  background-image:url(img/wallpaper/pro_bg.jpg);
+/* ===== Packages ===== */
+#package {
+  background: var(--bg-package);
+  transition: background 0.4s ease;
 }
 
-#heading{
+#heading {
   display: flex;
   justify-content: center;
-  padding: .7%;
+  padding: 0.7%;
   text-transform: uppercase;
-  background-image: linear-gradient(to right,rgb(255, 0, 0),rgb(255, 247, 0),rgb(255, 0, 157));
-  -webkit-background-clip:text;
+  background-image: linear-gradient(
+    to right,
+    rgb(255, 0, 0),
+    rgb(255, 247, 0),
+    rgb(255, 0, 157)
+  );
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   letter-spacing: 2%;
 }
 
-#packages-items{
+#packages-items {
   display: flex;
   align-items: flex-start;
-  justify-content:start;
+  justify-content: start;
   flex-wrap: wrap;
   gap: 20px;
 }
@@ -128,156 +224,186 @@ html{
   padding-top: 10px;
   width: 100%;
   height: 250px;
-  object-fit:contain;
+  object-fit: contain;
 }
 
-.card{
+.card {
   background-color: black;
   color: white;
   border-color: aliceblue;
   border-radius: 15px;
-    transition: all ease 0.25s !important;
+  transition: all ease 0.25s !important;
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 5px 5px 5px rgb(255, 255, 255);
-  background-position: center;
+  box-shadow: var(--card-hover-shadow);
   border-color: white;
 }
 
-.card-title{
+.card-title {
   text-transform: capitalize;
 }
 
-/* booking-------------------------------------------------------------------------------------------------------------------- */
-
-#booking_heading{
-   color: red;
-  font-family: Ribeye,cursive;
-  letter-spacing: 2%
+/* ===== Booking ===== */
+#booking_heading {
+  color: red;
+  font-family: Ribeye, cursive;
+  letter-spacing: 2%;
 }
 
-#booking{
+#booking {
   padding-top: 7.9%;
-  background-image: url(img/wallpaper/boook.jpg);
-  background-size: cover;
-  background-position: center;
+  background: var(--bg-booking);
+  transition: background 0.4s ease;
 }
 
-.booking_form{
+.booking_form {
   padding-top: 10%;
   width: 50%;
   height: 80%;
   margin: auto;
-  color: #FFFFFF;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  color: var(--form-label);
+  transition: color 0.3s ease;
 }
 
-#book_trip{
+#book_trip {
   position: relative;
   padding-left: 45%;
   padding-top: 4%;
 }
 
-.form-control{
+.form-control {
   border-radius: 11px;
+  background-color: var(--form-bg) !important;
+  color: var(--form-text) !important;
+  border-color: var(--form-border) !important;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
-/* about us------------------------------------------------------------------------------------------------------------------------ */
-#about_us{
-  height: 100vh;
+.form-control::placeholder {
+  color: var(--form-border);
+}
+
+/* ===== About Us ===== */
+#about_us {
+  min-height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
-  background-image: url(img/wallpaper/aboutus.jpg);
+  align-items: flex-start;
+  background: var(--bg-about);
+  transition: background 0.4s ease;
 }
 
-#about_us_content{
-  padding-top: 10%;
-  height: 80%;
+#about_us_content {
   width: 70%;
-  color: rgb(0, 225, 0);
-  text-shadow: 1px 1px 2px black;
-  backdrop-filter: blur(2px); 
+  margin: 5% auto;
+  padding: 5%;
+  color: var(--about-text);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  background: var(--about-glass);
+  border-radius: 14px;
+  transition:
+    background 0.4s ease,
+    color 0.3s ease;
 }
 
-/* contact_us------------------------------------------------------------------------------------------------------------------------*/
-#contact_us{
-  background-image: linear-gradient(to right,rgb(88, 87, 87),rgb(63, 62, 62));
+#about_us_content h2 {
+  color: var(--about-heading);
+  transition: color 0.3s ease;
 }
 
-#contact_us_content{
-  height:80%;
+/* ===== Contact Us ===== */
+#contact_us {
+  background: var(--bg-contact);
+  transition: background 0.4s ease;
+}
+
+#contact_us_content {
+  height: 80%;
   width: 80%;
   margin: auto;
   padding-top: 5%;
 }
 
-.exploria_id{
+#contact_us_heading {
+  color: var(--contact-h1);
+  transition: color 0.3s ease;
+}
+
+.contact-intro {
+  color: var(--contact-intro);
+  transition: color 0.3s ease;
+}
+
+.exploria_id {
   text-decoration: none;
   color: rgb(0, 255, 0);
 }
 
-.icons{
+.icons {
   text-decoration: none;
-  color: black;
+  color: var(--icon-color);
   font-size: 1.5em;
+  transition: color 0.3s ease;
 }
 
-.contact_ep{
-  color: blueviolet;
+.icons h4 {
+  color: var(--icon-color);
+  transition: color 0.3s ease;
 }
 
-.contact_us_cont{
+.contact_ep {
+  color: var(--contact-ep);
+  transition: color 0.3s ease;
+}
+
+.contact_us_cont {
   display: flex;
   flex-direction: row;
   gap: 10%;
 }
 
-/* mobile view-------------------------------------------------------------------------------------------------------------------------- */
+/* ===== Mobile ===== */
 @media (max-width: 767.98px) {
-  #home{
+  #home {
     height: 120vh;
-}
-  
-  .navbar{
-    height: auto;
-    background-image:url(img/wallpaper/nav.jpg) !important;
-    background-size: cover;
-    background-position: center;
   }
 
-  .navbar nav > a {
-  color: gold;
-}
+  .navbar {
+    height: auto;
+    background: var(--nav-backdrop) !important;
+  }
 
   #home_content {
-    margin: 20% auto auto auto;  
-    width: 90%;               
-    text-align: center;       
-  }
-
-  #letsgoo-btn {
-    margin-left: 0;           
+    margin: 20% auto auto auto;
+    width: 90%;
     text-align: center;
   }
 
-   #about_us {
+  #letsgoo-btn {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  #about_us {
     height: auto;
     padding: 20px 10px;
     display: block;
   }
 
   #about_us_content {
-    width: 95%;              
-    padding: 15px;           
-    margin: 0 auto;          
-    text-align: justify;     
-    font-size: 15px;        
+    width: 95%;
+    padding: 15px;
+    margin: 20px auto;
+    text-align: justify;
+    font-size: 15px;
     line-height: 1.6;
-    backdrop-filter: blur(3px);
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 10px;
   }
 
   #about_us_content h2 {
@@ -288,5 +414,9 @@ html{
 
   #about_us_content p {
     margin-bottom: 15px;
+  }
+
+  #dark-mode-btn {
+    margin: 8px 0 4px 0;
   }
 }
